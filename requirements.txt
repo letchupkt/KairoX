@@ -1,0 +1,13 @@
+requests
+dnspython
+rich
+colorama
+stem 
+pysocks
+pyngrok
+python-socketio
+eventlet
+pyshorteners
+opencv-python
+twilio
+Pillow

