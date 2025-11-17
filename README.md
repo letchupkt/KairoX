@@ -1,6 +1,7 @@
 # 🎯 KairoX - Social Engineering Toolkit
 
-![KairoX Logo](KairoX.png)
+<img width="1700" height="460" alt="github-header-banner (3)" src="https://github.com/user-attachments/assets/b0ac06e8-e946-472e-81b2-191232be01fa" />
+
 
 ## ⚠️ LEGAL DISCLAIMER
 
@@ -341,3 +342,4 @@ git pull origin main
 If you find this tool useful, please star the repository!
 
 **Remember: Use responsibly and ethically!** 🔒
+
