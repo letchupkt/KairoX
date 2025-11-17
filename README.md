@@ -88,37 +88,37 @@ Unauthorized access to computer systems is illegal. This tool is designed for:
 
 ### Step 1: Clone Repository
 
-\`\`\`bash
+```bash
 git clone https://github.com/yourusername/KairoX.git
 cd KairoX
-\`\`\`
+```
 
 ### Step 2: Install Dependencies
 
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
 ### Step 3: Install Ngrok
 
 Download from: https://ngrok.com/download
 
 **Windows:**
-\`\`\`bash
+```bash
 # Place ngrok.exe in KairoX folder
-\`\`\`
+```
 
 **Linux/Mac:**
-\`\`\`bash
+```bash
 sudo mv ngrok /usr/local/bin/
 chmod +x /usr/local/bin/ngrok
-\`\`\`
+```
 
 ### Step 4: Configure Settings
 
-\`\`\`bash
+```bash
 python KairoX_GUI.py
-\`\`\`
+```
 
 1. Click "🛠️ Settings"
 2. Add your Ngrok auth token (get free at ngrok.com)
@@ -131,9 +131,9 @@ python KairoX_GUI.py
 
 ### Launch Application
 
-\`\`\`bash
+```bash
 python KairoX_GUI.py
-\`\`\`
+```
 
 ### Quick Start Examples
 
@@ -219,27 +219,27 @@ All Python files in this release are **obfuscated and encrypted** to prevent:
 ### Common Issues
 
 **"Ngrok not found"**
-\`\`\`bash
+```bash
 # Install ngrok and add to PATH
 # Or place in KairoX folder
-\`\`\`
+```
 
 **"Module not found"**
-\`\`\`bash
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
 **"Permission denied"**
-\`\`\`bash
+```bash
 # Run with appropriate permissions
 # Some modules may require admin/root
-\`\`\`
+```
 
 **"Port already in use"**
-\`\`\`bash
+```bash
 # Change port in module settings
 # Or kill process using the port
-\`\`\`
+```
 
 ---
 
@@ -325,9 +325,9 @@ For support and questions:
 ## 🔄 Updates
 
 Check for updates regularly:
-\`\`\`bash
+```bash
 git pull origin main
-\`\`\`
+```
 
 ---
 
@@ -342,4 +342,5 @@ git pull origin main
 If you find this tool useful, please star the repository!
 
 **Remember: Use responsibly and ethically!** 🔒
+
 
