@@ -76,6 +76,11 @@ Unauthorized access to computer systems is illegal. This tool is designed for:
    - Proxy configuration
    - Font size adjustment
 
+
+
+   <img width="1919" height="1079" alt="Screenshot 2025-11-17 231655" src="https://github.com/user-attachments/assets/de387d09-7f4f-438f-b485-35db49e8a5ca" />
+
+
 ---
 
 ## 📦 Installation
@@ -342,5 +347,6 @@ git pull origin main
 If you find this tool useful, please star the repository!
 
 **Remember: Use responsibly and ethically!** 🔒
+
 
 
